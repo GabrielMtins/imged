@@ -5,10 +5,13 @@ ImgEd is a library to edit images files in C.
 This library is under GNU Lesser General Public License, either version 3
 or later.
 
-## Compiling
+## Install
+
+Type this on the terminal:
 
 ```
 $ make
+$ sudo make install
 ```
 
 ## Support for image formats
