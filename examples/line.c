@@ -10,6 +10,8 @@
  * $ ./main
 */
 
+/* this program generates a line that goes across the screen */
+
 #define CANVAS_WIDTH 1280
 #define CANVAS_HEIGHT 720
 
