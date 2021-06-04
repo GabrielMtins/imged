@@ -25,3 +25,12 @@ A color structure. It has 4 variables: r, g, b, a, which represents the red,
 green, blue and alpha channel. This variables can vary from 0 to 255.
 
 ## General Functions
+
+```
+ImgCanvas* img_createCanvas(int width, int height);
+```
+
+Create a canvas with given width and height.
+
+
+
