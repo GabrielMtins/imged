@@ -41,6 +41,8 @@ void img_putPixel(ImgCanvas* canvas, int x, int y, ImgColor color);
 
 void img_drawLine(ImgCanvas* canvas, int x1, int y1, int x2, int y2, ImgColor color);
 
+void img_drawAALine(ImgCanvas* canvas, int x1, int y1, int x2, int y2, ImgColor color);
+
 void img_destroyCanvas(ImgCanvas* canvas);
 
 #endif

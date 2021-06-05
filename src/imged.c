@@ -90,6 +90,61 @@ void img_drawLine(ImgCanvas* canvas, int x1, int y1, int x2, int y2, ImgColor co
 	}
 }
 
+void img_drawAALine(ImgCanvas* canvas, int x1, int y1, int x2, int y2, ImgColor color){
+	if(canvas == NULL) return;
+	double dx, dy, steps, start_x, start_y;
+
+	dx = (x2-x1);
+	dy = (y2-y1);
+	steps = 0;
+
+	if(fabs(dx) > fabs(dy)) steps = fabs(dx);
+	else steps = fabs(dy);
+
+	start_x = x1, start_y = y1;
+
+	for(int i = 0; i < steps; i++){
+		start_x += (double)dx/steps;
+		start_y += (double)dy/steps;
+
+		double gradient_top, gradient_bottom;
+		
+		if(fabs(dy) < fabs(dx)){
+			gradient_top = start_y - (int) start_y;
+			gradient_bottom = 1 - gradient_top;
+		}
+		else{
+			gradient_top = start_x - (int) start_x;
+			gradient_bottom = 1 - gradient_top;
+		}
+
+		ImgColor background = img_getPixelColor(canvas, start_x, start_y);
+
+		ImgColor color_top = {
+			gradient_top * background.r + (1.0 - gradient_top) * color.r,
+			gradient_top * background.g + (1.0 - gradient_top) * color.g,
+			gradient_top * background.b + (1.0 - gradient_top) * color.b,
+			gradient_top * background.a + (1.0 - gradient_top) * color.a
+		};
+
+		ImgColor color_bottom = {
+			gradient_bottom * background.r + (1.0 - gradient_bottom) * color.r,
+			gradient_bottom * background.g + (1.0 - gradient_bottom) * color.g,
+			gradient_bottom * background.b + (1.0 - gradient_bottom) * color.b,
+			gradient_bottom * background.a + (1.0 - gradient_bottom) * color.a
+		};
+
+		if(fabs(dy) < fabs(dx)){
+			img_putPixel(canvas, start_x, start_y, color_top);
+			img_putPixel(canvas, start_x, start_y + 1, color_bottom);
+		}
+		else{
+			img_putPixel(canvas, start_x, start_y, color_top);
+			img_putPixel(canvas, start_x + 1, start_y, color_bottom);
+		}
+	}
+}
+
 void img_destroyCanvas(ImgCanvas* canvas){
 	if(canvas == NULL) return;
 
