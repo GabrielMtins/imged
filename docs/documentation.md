@@ -57,6 +57,12 @@ Puts a pixel with given color at given x and y coordinates.
 Draws a line between two given pixels with a given color.
 The line starts at the coordinates (x1, y2) and ends at the coordinates (x2, y2)
 
+### img\_drawAALine
+
+`void img_drawAALine(ImgCanvas* canvas, int x1, int y1, int x2, int y2, ImgColor color);`
+
+Draws a line with antialiasing between two given pixels with a given color.
+The line starts at the coordinates (x1, y2) and ends at the coordinates (x2, y2)
 
 ### img\_destroyCanvas
 
@@ -100,4 +106,11 @@ it will save to standard output.
 `void img_savePPM(ImgCanvas* canvas, const char* filename);`
 
 Saves the image of the canvas to a PPM file. If filename is NULL, then
+it will save to standard output.
+
+### img\_savePNG
+
+`void img_savePNG(ImgCanvas* canvas, const char* filename);`
+
+Saves the image of the canvas to a PNG file. If filename is NULL, then
 it will save to standard output.
