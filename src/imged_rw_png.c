@@ -38,8 +38,8 @@ void img_savePNG(ImgCanvas* canvas, const char* filename){
 		file = fopen(filename, "wb");
 	}
 
-	png_struct* png = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
-	png_info* info = png_create_info_struct(png);
+	png_structp png = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
+	png_infop info = png_create_info_struct(png);
 
 	if(png == NULL || info == NULL){
 		if(file != stdout) fclose(file);
@@ -66,5 +66,7 @@ void img_savePNG(ImgCanvas* canvas, const char* filename){
 	}
 
 	png_write_end(png, NULL);
-	png_destroy_write_struct(&png, NULL);
+	png_destroy_write_struct(&png, &info);
+
+	if(file != stdout) fclose(file);
 }
