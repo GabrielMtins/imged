@@ -17,4 +17,4 @@ $ sudo make install
 ## Support for image formats
 
 Currently, this library supports importing from BMP or farbfeld files.
-It can export to PPM, BMP or farbfeld. Support for other formats is planned.
+It can export to PPM, BMP, PNG or farbfeld. Support for other formats is planned.
