@@ -31,4 +31,6 @@ void img_saveBMP(ImgCanvas* canvas, const char* filename);
 
 void img_savePPM(ImgCanvas* canvas, const char* filename);
 
+void img_savePNG(ImgCanvas* canvas, const char* filename);
+
 #endif
